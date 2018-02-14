@@ -54,10 +54,7 @@ namespace SimpleTests
             {
                 if (_driver == null)
                 {
-                    if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-                        _driver = AddDisposable(new InternetExplorerDriver());
-                    else
-                    {
+
                         var opts = new ChromeOptions();
                         if (!Debugger.IsAttached)
                         {
@@ -65,7 +62,7 @@ namespace SimpleTests
                             opts.AddArgument("window-size=1920x1200");
                         }
                         _driver = AddDisposable(new ChromeDriver(opts));
-                    }
+                    
                     _driver.Manage().Window.Maximize();
                 }
                 return _driver;
